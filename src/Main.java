@@ -35,7 +35,7 @@ public class Main {
                    continue;
                }
                String price=product.select(" div.od-product-card-region  div.od-product-card-region  div.od-product-card-region  span.od-graphql-price-big-price").text();
-               String Description=product.select("div.od-product-card-region div.od-product-card-region .od-product-card-region-description a.od-product-card-description").text();
+               String Description=name;
                if (!Shortname.isEmpty() && !price.isEmpty() && !Description.isEmpty())
                {
                    productList.add(new String[]{Shortname,price,Description});
@@ -53,9 +53,15 @@ public class Main {
             String csvFile = "products.csv";
             try (PrintWriter writer = new PrintWriter(new File(csvFile))) {
                 writer.println("Name,Price,Description");
+
                 for (int i = 0; i < 10 && i < productList.size(); i++) {
                     String[] product = productList.get(i);
-                    writer.println(product[0] + "," + product[1] + "," + product[2]);
+                    writer.println();
+                    writer.println("Name of Product:"+product[0] );
+                    writer.println("price:  " + product[1]);
+                    writer.println( "Description: "+ product[2]);
+
+
                 }
             }
 
